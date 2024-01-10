@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="table-data__tool-right">
-                    <a href="category.html">
+                    <a href="{{route('admin#categoryCreatePage')}}">
                         <button class="au-btn au-btn-icon au-btn--green au-btn--small">
                             <i class="zmdi zmdi-plus"></i>add item
                         </button>  
@@ -30,27 +30,35 @@
                 <table class="table table-data2">
                     <thead>
                         <tr>
+                            <th>id</th>
                             <th>name</th>
-                            <th>email</th>
-                            <th>description</th>
-                            <th>date</th>
-                            <th>status</th>
-                            <th>price</th>
+                            <th>created date</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="tr-shadow">
-                            <td>Lori Lynch</td>
-                            <td>
-                                <span class="block-email">lori@example.com</span>
-                            </td>
-                            <td class="desc">Samsung S8 Black</td>
-                            <td>2018-09-27 02:12</td>
-                            <td>
-                                <span class="status--process">Processed</span>
-                            </td>
-                            <td>$679.00</td>
+                        @foreach ($data as $item)
+                            <tr class="tr-shadow">
+                                <td>{{$item->id}}</td>
+                                <td>{{$item->name}}</td>
+                                <td>{{$item->created_at->format('j-M-Y')}}</td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="View">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"></tr>
+                        @endforeach
+                        {{-- <tr class="tr-shadow">
                             <td>
                                 <div class="table-data-feature">
                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
@@ -68,7 +76,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr class="spacer"></tr>
+                        <tr class="spacer"></tr> --}}
                     </tbody>
                 </table>
             </div>

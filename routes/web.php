@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,12 +36,12 @@ Route::middleware([
     Route::prefix('admin')->middleware('admin_auth')->group(function () {
         // category
         Route::prefix('category')->group(function () {
-            Route::get('list', function(){
-                return view('admin.category.list');
-            })->name('admin#categoryList');
+
+            Route::get('list', [CategoryController::class, 'listPage'])->name('admin#categoryList');
+            Route::get('create',[CategoryController::class,'createPage'])->name('admin#categoryCreatePage');
+            Route::post('create',[CategoryController::class, 'create'])->name('admin#createCategory');
+
         });
-        // product
-        // user-list
     });
 
 });
