@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     // go to category list page
     public function listPage(){
-        $data = Category::orderBy('created_at','desc')->get();
+        $data = Category::orderBy('created_at','desc')->paginate(5);
         return view('admin.category.list', compact('data'));
     }
     
@@ -25,6 +25,13 @@ class CategoryController extends Controller
         $data = $this->getRequestData($request);
         Category::create($data);
         return redirect()->route('admin#categoryList');
+    }
+
+    // delete category
+    public function delete($id){
+        Category::where('id', $id)->delete();
+        // return redirect()->route('admin#categoryList')
+        return back()->with(['deleteSuccess' => 'Category deleted successfully!']);
     }
 
 

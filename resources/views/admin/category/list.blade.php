@@ -26,63 +26,71 @@
                     </button>  
                 </div>
             </div>
-            <div class="table-responsive table-responsive-data2">
-                <table class="table table-data2">
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>name</th>
-                            <th>created date</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($data as $item)
-                            <tr class="tr-shadow">
-                                <td>{{$item->id}}</td>
-                                <td>{{$item->name}}</td>
-                                <td>{{$item->created_at->format('j-M-Y')}}</td>
-                                <td>
-                                    <div class="table-data-feature">
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="View">
-                                            <i class="fa-solid fa-eye"></i>
-                                        </button>
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="zmdi zmdi-edit"></i>
-                                        </button>
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                            <i class="zmdi zmdi-delete"></i>
-                                        </button>
-                                    </div>
-                                </td>
+
+            @if (count($data) !== 0)
+                <div class="table-responsive table-responsive-data2">
+                    <table class="table table-data2">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>name</th>
+                                <th>created date</th>
+                                <th></th>
                             </tr>
-                            <tr class="spacer"></tr>
-                        @endforeach
-                        {{-- <tr class="tr-shadow">
-                            <td>
-                                <div class="table-data-feature">
-                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                                        <i class="zmdi zmdi-mail-send"></i>
-                                    </button>
-                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                        <i class="zmdi zmdi-edit"></i>
-                                    </button>
-                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                        <i class="zmdi zmdi-delete"></i>
-                                    </button>
-                                    <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                        <i class="zmdi zmdi-more"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="spacer"></tr> --}}
-                    </tbody>
-                </table>
-            </div>
-            <!-- END DATA TABLE -->
+                        </thead>
+                        <tbody>
+                            @foreach ($data as $item)
+                                <tr class="tr-shadow">
+                                    <td>{{$item->id}}</td>
+                                    <td>{{$item->name}}</td>
+                                    <td>{{$item->created_at->format('j-M-Y')}}</td>
+                                    <td>
+                                        <div class="table-data-feature">
+                                            <button class="item" data-toggle="tooltip" data-placement="top" title="View">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </button>
+                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <i class="zmdi zmdi-edit"></i>
+                                            </button>
+                                            <a href="{{route('admin#deleteCategory',$item->id)}}">
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="spacer"></tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                    {{$data->links()}}
+
+                </div>
+                <!-- END DATA TABLE -->
+            @else
+                <div class=" text-center py-5">
+                    <h3>There are no categories at the moment</h3>
+                </div>
+            @endif
+              
+
+
         </div>
+
+        
     </div>
+
+    @if(session('deleteSuccess'))
+        <div class="alert alert-danger alert-dismissible fade show col-5 offset-7" role="alert">
+            {{session('deleteSuccess')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    
 </div>
 
 @endsection
