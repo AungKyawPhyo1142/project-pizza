@@ -21,11 +21,18 @@
                             <i class="zmdi zmdi-plus"></i>add item
                         </button>  
                     </a>
-                    <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                        CSV download
-                    </button>  
+                    
                 </div>
             </div>
+
+            {{-- SEARCH --}}
+            <form action="{{route('admin#categoryList')}}" method="GET">
+                @csrf
+                <div class=" d-flex col-3 offset-9">
+                    <input class="form-control" value="{{old('searchKey')}}" type="text" name="searchKey"  placeholder="Search">
+                    <button class=" btn btn-dark text-white" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
 
             @if (count($data) !== 0)
                 <div class="table-responsive table-responsive-data2">
@@ -83,7 +90,7 @@
     </div>
 
     @if(session('deleteSuccess'))
-        <div class="alert alert-danger alert-dismissible fade show col-5 offset-7" role="alert">
+        <div class="mt-5 alert alert-danger alert-dismissible fade show col-5 offset-7" role="alert">
             {{session('deleteSuccess')}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
