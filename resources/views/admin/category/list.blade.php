@@ -53,12 +53,14 @@
                                     <td>{{$item->created_at->format('j-M-Y')}}</td>
                                     <td>
                                         <div class="table-data-feature">
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="View">
+                                            {{-- <button class="item" data-toggle="tooltip" data-placement="top" title="View">
                                                 <i class="fa-solid fa-eye"></i>
-                                            </button>
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                <i class="zmdi zmdi-edit"></i>
-                                            </button>
+                                            </button> --}}
+                                            <a href="{{route('admin#categoryEditPage', $item->id)}}">
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                    <i class="zmdi zmdi-edit"></i>
+                                                </button>
+                                            </a>
                                             <a href="{{route('admin#deleteCategory',$item->id)}}">
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
@@ -92,6 +94,14 @@
     @if(session('deleteSuccess'))
         <div class="mt-5 alert alert-danger alert-dismissible fade show col-5 offset-7" role="alert">
             {{session('deleteSuccess')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    @if(session('updateSuccess'))
+        <div class="mt-5 alert alert-warning alert-dismissible fade show col-5 offset-7" role="alert">
+            {{session('updateSuccess')}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>

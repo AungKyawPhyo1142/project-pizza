@@ -39,6 +39,27 @@ class CategoryController extends Controller
         return back()->with(['deleteSuccess' => 'Category deleted successfully!']);
     }
 
+    // go to edit category page
+    public function editPage($id){
+        $category = Category::where('id', $id)->first();
+        return view('admin.category.edit', compact('category'));
+    }
+
+
+    // edit category
+    public function edit($id, Request $req){
+        // edit validation
+        $validationRules = [
+            'categoryName' => 'required|unique:categories,name,'.$id
+        ];
+        Validator::make($req->all(),$validationRules)->validate();
+
+        $data = $this->getRequestData($req);
+        Category::where('id', $id)->update($data);
+        return redirect()->route('admin#categoryList')->with(['updateSuccess' => 'Category updated successfully!']);
+    }
+
+
 
     //---------------------- PRIVATE FUNCTIONS ----------------------//
     private function validateCategory(Request $request){
