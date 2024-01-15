@@ -88,7 +88,6 @@
 
         </div>
 
-        
     </div>
 
     @if(session('deleteSuccess'))

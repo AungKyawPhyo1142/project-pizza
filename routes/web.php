@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CategoryController;
 
 /*
@@ -34,17 +35,23 @@ Route::middleware([
 
     // admin
     Route::prefix('admin')->middleware('admin_auth')->group(function () {
+
         // category
         Route::prefix('category')->group(function () {
-
             Route::get('list', [CategoryController::class, 'listPage'])->name('admin#categoryList');
             Route::get('create',[CategoryController::class,'createPage'])->name('admin#categoryCreatePage');
             Route::post('create',[CategoryController::class, 'create'])->name('admin#createCategory');
             Route::get('delete/{id}', [CategoryController::class, 'delete'])->name('admin#deleteCategory');
             Route::get('edit/{id}', [CategoryController::class, 'editPage'])->name('admin#categoryEditPage');
             Route::post('edit/{id}', [CategoryController::class, 'edit'])->name('admin#editCategory');
-
         });
+
+        // account
+        Route::prefix('account')->group(function () {
+           Route::get('password/change', [AccountController::class, 'changePasswordPage'])->name('admin#changePasswordPage');
+           Route::post('password/change', [AccountController::class, 'changePassword'])->name('admin#changePassword');
+        });
+
     });
 
 });

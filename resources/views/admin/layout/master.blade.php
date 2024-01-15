@@ -113,6 +113,13 @@
                                                                     <i class="zmdi zmdi-account"></i>Account</a>
                                                             </div>
                                                         </div>
+                                                        <div class="account-dropdown__body">
+                                                            <div class="account-dropdown__item">
+                                                                <a href="{{route('admin#changePasswordPage')}}">
+                                                                    <i class="fa-solid fa-lock"></i>Change Password
+                                                                </a>
+                                                            </div>
+                                                        </div>
                                                         <div class="account-dropdown__footer">
                                                             {{-- <a href="#">
                                                                 <i class="zmdi zmdi-power"></i>Logout</a> --}}
