@@ -20,7 +20,7 @@
                     <div class="d-flex px-3 align-items-center">
                         <div class="col-5 mr-5">
                             <img src="{{asset('admin/images/default_image.jpeg')}}" class="img-thumbnail" alt="Default Image" />
-                            <button class="btn btn-primary mt-2 w-100"><i class="fa-solid fa-pen mr-2"></i>Edit</button>
+                            <a href="{{route('admin#accountEditPage')}}" class="btn btn-primary mt-2 w-100"><i class="fa-solid fa-pen mr-2"></i>Edit</a>
                         </div>
                         <div class="">
                             <p class="mb-2" style="font-size: 1.35em"> <i class="fa-solid fa-user mr-3"></i> {{Auth::user()->name}}</p>
@@ -34,14 +34,6 @@
                 </div>
             </div>
         </div> 
-        @if(session('notMatch'))
-            <div class="mt-5 alert alert-danger alert-dismissible fade show col-5 offset-7" role="alert">
-                {{session('notMatch')}}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        @endif
     </div>
 </div>
 @endsection

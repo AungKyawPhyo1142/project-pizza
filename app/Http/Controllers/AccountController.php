@@ -55,6 +55,11 @@ class AccountController extends Controller
         return view('admin.account.details');
     }
 
+    // go to account edit page
+    public function editPage(){
+        return view('admin.account.edit');
+    }
+
     // private functions
 
     // validate change password fields
