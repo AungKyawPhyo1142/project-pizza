@@ -40,8 +40,7 @@ class AccountController extends Controller
             User::where('id', Auth::user()->id)->update($data);
 
             // log out the current user
-            // Auth::logout();
-            Auth::guard('web')->logout();
+            Auth::logout();
 
             return redirect()->route('auth#login');
             
@@ -49,6 +48,11 @@ class AccountController extends Controller
 
         return back()->with(['notMatch' => 'Credentials do not match!']);
 
+    }
+
+    // go to account details page
+    public function details(){
+        return view('admin.account.details');
     }
 
     // private functions

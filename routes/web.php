@@ -16,11 +16,7 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
+Route::middleware(['auth'])->group(function () {
 
     // dashboard
     Route::get('dashboard', [AuthController::class, 'dashboard'])->name('auth#dashboard');
@@ -50,6 +46,8 @@ Route::middleware([
         Route::prefix('account')->group(function () {
            Route::get('password/change', [AccountController::class, 'changePasswordPage'])->name('admin#changePasswordPage');
            Route::post('password/change', [AccountController::class, 'changePassword'])->name('admin#changePassword');
+           Route::get('detail', [AccountController::class, 'details'])->name('admin#accountDetails');
+
         });
 
     });
