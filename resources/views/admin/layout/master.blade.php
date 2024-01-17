@@ -88,11 +88,12 @@
                                             <div class="account-wrap">
                                                 <div class="account-item clearfix js-item-menu">
                                                     <div class="image">
-                                                        @if (Auth::user()->image === null)
-                                                            <img src="{{asset('admin/images/default_image.jpeg')}}" alt="Default Image" />
-                                                        @else
-                                                            <img src="{{asset('admin/images/default_image.jpeg')}}" alt="Default Image" />
-                                                        @endif
+                                                        @if (Auth::user()->image===null)
+                                                        <img src="{{asset('admin/images/default_image.jpeg')}}" class="img-thumbnail" alt="Default Image" />
+                                                    @else
+                                                        <img src="{{asset('storage/'.Auth::user()->image)}}" class="img-thumbnail" alt="Default Image" />
+                                                    @endif
+                        
                                                     </div>
                                                     <div class="content">
                                                         <a class="js-acc-btn" href="#">{{Auth::user()->name}}</a>
@@ -101,11 +102,11 @@
                                                         <div class="info clearfix">
                                                             <div class="image">
                                                                 <a href="#">
-                                                                    @if (Auth::user()->image === null)
-                                                                        <img src="{{asset('admin/images/default_image.jpeg')}}" alt="Default Image" />
-                                                                    @else
-                                                                        <img src="{{asset('admin/images/default_image.jpeg')}}" alt="Default Image" />
-                                                                    @endif
+                                                                    @if (Auth::user()->image===null)
+                                                                    <img src="{{asset('admin/images/default_image.jpeg')}}" class="img-thumbnail" alt="Default Image" />
+                                                                @else
+                                                                    <img src="{{asset('storage/'.Auth::user()->image)}}" class="img-thumbnail" alt="Default Image" />
+                                                                @endif                                    
                                                                 </a>
                                                             </div>
                                                             <div class="content">

@@ -17,11 +17,15 @@
                         <h3 class="text-center title-1">Edit Account</h3>
                     </div>
                     <hr>
-                    <form action="" method="POST">
+                    <form action="{{route('admin#editAccount', Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="d-flex px-3 align-items-center">
                             <div class="col-5 mr-5">
+                                @if (Auth::user()->image===null)
                                 <img src="{{asset('admin/images/default_image.jpeg')}}" class="img-thumbnail" alt="Default Image" />
+                            @else
+                                <img src="{{asset('storage/'.Auth::user()->image)}}" class="img-thumbnail" alt="Default Image" />
+                            @endif
                                 <input type="file" name="image" class=" mt-5">
                             </div>
                             <div class="">
@@ -49,9 +53,6 @@
                                 <div class="form-group">
                                     <label for="role" class="control-label mb-1">Role</label>
                                     <input disabled id="cc-pament" name="role" value="{{old('role', Auth::user()->role)}}" type="text" class="form-control @error('role') is-invalid @enderror" aria-required="true" aria-invalid="false" placeholder="Role">
-                                    @error('role')
-                                        <p class="text-danger">{{$message}}</p>
-                                    @enderror
                                 </div>        
                                 <div class="form-group">
                                     <label for="address" class="control-label mb-1">Address</label>

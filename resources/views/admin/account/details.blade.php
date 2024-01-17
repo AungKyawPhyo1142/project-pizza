@@ -19,7 +19,11 @@
                     <hr>
                     <div class="d-flex px-3 align-items-center">
                         <div class="col-5 mr-5">
-                            <img src="{{asset('admin/images/default_image.jpeg')}}" class="img-thumbnail" alt="Default Image" />
+                            @if (Auth::user()->image===null)
+                                <img src="{{asset('admin/images/default_image.jpeg')}}" class="img-thumbnail" alt="Default Image" />
+                            @else
+                                <img src="{{asset('storage/'.Auth::user()->image)}}" class="img-thumbnail" alt="Default Image" />
+                            @endif
                             <a href="{{route('admin#accountEditPage')}}" class="btn btn-primary mt-2 w-100"><i class="fa-solid fa-pen mr-2"></i>Edit</a>
                         </div>
                         <div class="">
