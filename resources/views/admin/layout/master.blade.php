@@ -54,22 +54,15 @@
                     <ul class="list-unstyled navbar__list">
                         <li>
                             <a href="{{route('admin#categoryList')}}" class="js-arrow">
-                                <i class="fa-solid fa-list"></i> Category List
-                            </a>
-                        </li>
-                        {{-- <li class="active has-sub">
-                            <a class="js-arrow" href="index.html">
-                                <i class="fas fa-tachometer-alt"></i>Home Page
+                                <i class="fa-solid fa-list"></i> Category
                             </a>
                         </li>
                         <li>
-                            <a href="category.html">
-                                <i class="fas fa-chart-bar"></i>Category</a>
+                            <a href="{{route('admin#productList')}}" class="js-arrow">
+                                <i class="fa-solid fa-pizza-slice"></i> Pizza
+                            </a>
                         </li>
-                        <li>
-                            <a href="customerList.html">
-                                <i class="fas fa-chart-bar"></i>Customers</a>
-                        </li> --}}
+                        
                     </ul>
                 </nav>
             </div>
