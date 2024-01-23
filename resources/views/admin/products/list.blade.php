@@ -42,6 +42,7 @@
                                 <th>name</th>
                                 <th>views</th>
                                 <th>price</th>
+                                <th>category</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -52,6 +53,7 @@
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->view_count}}</td>
                                     <td>{{$item->price}} Ks</td>
+                                    <td>{{$item->category_name}}</td>
                                     <td>
                                         <div class="table-data-feature">
                                             <a href="{{route('admin#productDetails', $item->id)}}">
